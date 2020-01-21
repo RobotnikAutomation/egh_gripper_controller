@@ -1,0 +1,13 @@
+joints: 
+  - egh_left_finger_joint
+  - egh_right_finger_joint
+
+egh_left_finger_joint:
+  max_value: 0.0
+  min_value: -0.38
+  velocity: 0.01
+
+egh_right_finger_joint:
+  max_value: 0.0
+  min_value: -0.38
+  velocity: 0.01
