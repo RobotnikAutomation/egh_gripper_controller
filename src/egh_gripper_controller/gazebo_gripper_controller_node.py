@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 
-from gazebo_gripper_controller import GazeboGripperController
+from controllers.gazebo_gripper_controller import GazeboGripperController
 
 def main():
     rospy.init_node("GazeboGripperController")

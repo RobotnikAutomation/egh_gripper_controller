@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 
-from ur_io_gripper_controller import URIOGripperController
+from controllers.ur_io_gripper_controller import URIOGripperController
 
 def main():
     rospy.init_node("URIOGripperController")
