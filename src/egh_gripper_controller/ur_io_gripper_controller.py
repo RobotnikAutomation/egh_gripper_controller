@@ -39,6 +39,10 @@ class URIOGripperController(GripperController):
 
     def close_cb(self, msg):
         """Close gripper service server callback"""
+
+        self.left_joint_desired_position = self.left_joint_close_position
+        self.right_joint_desired_position = self.right_joint_close_position
+        
         response = TriggerResponse()
         response.message = "Gripper correctly closed"
         
@@ -56,11 +60,14 @@ class URIOGripperController(GripperController):
         else:
             response.message = "Failed setting UR output"
         
-        self.status = Status.CLOSED
         return response
     
     def open_cb(self, msg):
         """Open gripper service server callback"""
+
+        self.left_joint_desired_position = self.left_joint_open_position
+        self.right_joint_desired_position = self.right_joint_open_position
+
         response = TriggerResponse()
         response.message = "Gripper correctly opened"
         
@@ -78,5 +85,23 @@ class URIOGripperController(GripperController):
         else:
             response.message = "Failed setting UR output"
         
-        self.status = Status.OPENED
         return response
+
+    def process_new_goal(self, new_goal):
+        """Process new action goal"""
+        rospy.loginfo('%s::process_new_goal: New goal -> position =  %.2f, max_effort = %.2f'%(self._node_name, new_goal.command.position, new_goal.command.max_effort))	
+        
+        desired_position = new_goal.command.position
+        
+        if desired_position != 0.0 and desired_position != 1.0:
+            rospy.logerr('%s::write_reference: For the moment 0.0 (close) and 1.0 (open) values are accepted'\
+                        %self._node_name)
+            return -1
+
+        if desired_position == 0.0:
+            self.close_cb(TriggerRequest())
+        elif desired_position == 1.0:
+            self.open_cb(TriggerRequest())
+
+        return 0  
+        
