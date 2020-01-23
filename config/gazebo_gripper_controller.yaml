@@ -1,0 +1,19 @@
+status_topic_name: status
+close_service_name: close
+open_service_name: open
+
+left_joint: robot_wsg50_finger_left_joint
+left_joint_open_position: -0.055
+left_joint_close_position: -0.0027
+
+right_joint: robot_wsg50_finger_right_joint
+right_joint_open_position: 0.055
+right_joint_close_position: 0.0027
+
+joint_left_finger_controller:
+  type: position_controllers/JointPositionController
+  joint: robot_wsg50_finger_left_joint
+
+joint_right_finger_controller:
+  type: position_controllers/JointPositionController
+  joint: robot_wsg50_finger_right_joint

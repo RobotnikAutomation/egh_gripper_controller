@@ -3,12 +3,12 @@ close_service_name: close
 open_service_name: open
 
 ur_io_service_name: ur_hardware_interface/set_io
-update_joints_service_name: joints_updater/set_joints
+update_joints_service_name: joint_position_publisher/set_joints
 
-left_joint: egh_left_finger_joint
-left_joint_open_position: 0.0
-left_joint_close_position: -0.3
+left_joint: robot_wsg50_finger_left_joint
+left_joint_open_position: -0.055
+left_joint_close_position: -0.0027
 
-right_joint: egh_right_finger_joint
-right_joint_open_position: 0.0
-right_joint_close_position: -0.3
+right_joint: robot_wsg50_finger_right_joint
+right_joint_open_position: -0.055
+right_joint_close_position:  -0.0027

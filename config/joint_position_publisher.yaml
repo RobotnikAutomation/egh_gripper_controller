@@ -1,13 +1,13 @@
 joints: 
-  - egh_left_finger_joint
-  - egh_right_finger_joint
+  - robot_wsg50_finger_left_joint
+  - robot_wsg50_finger_right_joint
 
-egh_left_finger_joint:
-  max_value: 0.0
-  min_value: -0.38
-  velocity: 0.01
+robot_wsg50_finger_left_joint:
+  max_value: -0.055
+  min_value: -0.0027
+  velocity: 1.0
 
-egh_right_finger_joint:
-  max_value: 0.0
-  min_value: -0.38
-  velocity: 0.01
+robot_wsg50_finger_right_joint:
+  max_value: -0.055
+  min_value: -0.0027
+  velocity: 1.0
