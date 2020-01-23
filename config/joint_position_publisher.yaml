@@ -3,11 +3,11 @@ joints:
   - robot_wsg50_finger_right_joint
 
 robot_wsg50_finger_left_joint:
-  max_value: -0.055
-  min_value: -0.0027
+  max_value: -0.0027
+  min_value: -0.055
   velocity: 1.0
 
 robot_wsg50_finger_right_joint:
-  max_value: -0.055
-  min_value: -0.0027
+  max_value: 0.055
+  min_value: 0.0027
   velocity: 1.0

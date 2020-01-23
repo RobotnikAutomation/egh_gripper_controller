@@ -2,7 +2,7 @@ status_topic_name: status
 close_service_name: close
 open_service_name: open
 
-ur_io_service_name: ur_hardware_interface/set_io
+ur_io_service_name: arm/ur_hardware_interface/set_io
 update_joints_service_name: joint_position_publisher/set_joints
 
 min_opening: 0.0054

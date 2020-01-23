@@ -49,7 +49,7 @@ class URIOGripperController(GripperController):
         self.set_io_request.pin = 5
         set_io_res = self.ur_io_client.call(self.set_io_request)
 
-        if set_io_res.succes == True:
+        if set_io_res.success == True:
             self.set_joints_request.positions = self.close_positions
             update_joints_res = self.update_joints_client.call(
                 self.set_joints_request)

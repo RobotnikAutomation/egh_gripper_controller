@@ -87,12 +87,15 @@ class GripperController(RComponent):
         raise NotImplementedError("GripperController::close_cb: Should have implemented this" )
 
     def joint_state_cb(self, msg):
-        left_index = msg.name.index(self.left_joint_name)
-        right_index = msg.name.index(self.right_joint_name)
+        try:
+            left_index = msg.name.index(self.left_joint_name)
+            right_index = msg.name.index(self.right_joint_name)
 
-        self.left_joint_position = msg.position[left_index]
-        self.right_joint_position = msg.position[right_index]
-
+            self.left_joint_position = msg.position[left_index]
+            self.right_joint_position = msg.position[right_index]
+        except ValueError as identifier:
+            pass
+        
     def process_new_goal(self, new_goal):
         """Process new action goal"""
         rospy.loginfo('%s::process_new_goal: New goal -> position =  %.2f, max_effort = %.2f'%(self._node_name, new_goal.command.position, new_goal.command.max_effort))	
