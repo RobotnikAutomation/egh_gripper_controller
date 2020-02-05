@@ -1,6 +1,0 @@
-<launch>
-
-    <node name="gripper_controller" pkg="egh_gripper_controller" type="gazebo_gripper_controller_node.py" output="screen">
-        <rosparam command="load" file="$(find egh_gripper_controller)/config/gazebo_gripper_controller.yaml"/>
-    </node>
-</launch>

@@ -22,9 +22,9 @@ class URIOGripperController(GripperController):
         GripperController.ros_setup(self)
 
         self.set_joints_request = SetJointsRequest()
-        self.set_joints_request.joints_names = [self.left_joint_name, self.right_joint_name]
-        self.open_positions = [self.left_joint_open_position, self.right_joint_open_position]
-        self.close_positions = [self.left_joint_close_position, self.right_joint_close_position]
+        self.set_joints_request.joints_names = [self.master_joint]
+        self.open_positions = [self.master_joint_open_position]
+        self.close_positions = [self.master_joint_close_position]
 
         self.update_joints_client = rospy.ServiceProxy(self.update_joints_service_name, SetJoints)
         
@@ -40,13 +40,13 @@ class URIOGripperController(GripperController):
     def close_cb(self, msg):
         """Close gripper service server callback"""
 
-        self.left_joint_desired_position = self.left_joint_close_position
-        self.right_joint_desired_position = self.right_joint_close_position
+        self.master_joint_desired_position = self.master_joint_close_position
         
         response = TriggerResponse()
         response.message = "Gripper correctly closed"
         
         self.set_io_request.pin = 5
+
         set_io_res = self.ur_io_client.call(self.set_io_request)
 
         if set_io_res.success == True:
@@ -65,8 +65,7 @@ class URIOGripperController(GripperController):
     def open_cb(self, msg):
         """Open gripper service server callback"""
 
-        self.left_joint_desired_position = self.left_joint_open_position
-        self.right_joint_desired_position = self.right_joint_open_position
+        self.master_joint_desired_position = self.master_joint_open_position
 
         response = TriggerResponse()
         response.message = "Gripper correctly opened"

@@ -1,13 +1,7 @@
 joints: 
   - robot_egh_gripper_finger_left_joint
-  - robot_egh_gripper_finger_right_joint
 
 robot_egh_gripper_finger_left_joint:
-  max_value: -0.00105
-  min_value: -0.0481
-  velocity: 1.0
-
-robot_egh_gripper_finger_right_joint:
   max_value: 0.0481
-  min_value: 0.00105
-  velocity: 1.0
+  min_value: 0.0
+  velocity: 0.1
